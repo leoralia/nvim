@@ -1,6 +1,8 @@
 return {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-fugitive', --Git
+  'github/copilot.vim',
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -10,11 +12,6 @@ return {
   --
   --  This is equivalent to:
   --    require('Comment').setup({})
-
-  -- {
-  --   'nvim-telescope/telescope-fzf-native.nvim',
-  --   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
-  -- },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -78,6 +75,17 @@ return {
 
   { -- Autoformat
     'stevearc/conform.nvim',
+    lazy = false,
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('conform').format { async = true, lsp_fallback = true }
+        end,
+        mode = '',
+        desc = '[F]ormat buffer',
+      },
+    },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
@@ -192,4 +200,12 @@ return {
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
+
+  'kickstart.plugins.debug',
+  'kickstart.plugins.indent_line',
+  'kickstart.plugins.lint',
+
+  --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
+  --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
+  -- { import = 'custom.plugins' },
 }

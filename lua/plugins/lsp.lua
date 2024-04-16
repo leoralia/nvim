@@ -1,7 +1,6 @@
 return {
   -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
-
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     'williamboman/mason.nvim',
@@ -118,7 +117,6 @@ return {
         end
       end,
     })
-
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -148,7 +146,6 @@ return {
       -- But for many setups, the LSP (`tsserver`) will work just fine
       -- tsserver = {},
       --
-
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -164,7 +161,6 @@ return {
         },
       },
     }
-
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
     --  other tools, you can run
@@ -172,7 +168,6 @@ return {
     --
     --  You can press `g?` for help in this menu.
     require('mason').setup()
-
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
